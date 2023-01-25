@@ -12,6 +12,8 @@ const forecastTemp = document.querySelectorAll('.forecast-temp');
 const forecastIcon = document.querySelectorAll('.forecast-icon');
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const forecastDays = document.querySelectorAll('.forecast-day h2');
+const humidity = document.querySelector('#humidity');
+
 
 cityForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -23,6 +25,7 @@ cityForm.addEventListener('submit', (event) => {
             temperature.innerText = ((data.main.temp - 273.15) * 9/5 + 32).toFixed(2) + ' °F';
             feelsLike.innerText = ((data.main.feels_like - 273.15) * 9/5 + 32).toFixed(2) + ' °F';
             windSpeed.innerText = data.wind.speed;
+            humidity.innerText = data.main.humidity;
             weatherIcon.setAttribute('src', `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
             errorMessage.style.display = 'none';
             fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${search}&appid=${apiKey}`)
@@ -64,6 +67,7 @@ function showCurrentWeather() {
                     temperature.innerText = ((data.main.temp - 273.15) * 9/5 + 32).toFixed(2) + ' °F';
                     feelsLike.innerText = ((data.main.feels_like - 273.15) * 9/5 + 32).toFixed(2) + ' °F';
                     windSpeed.innerText = data.wind.speed;
+                    humidity.innerText = data.main.humidity;
                     weatherIcon.setAttribute('src', `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
                     errorMessage.style.display = 'none';
 
