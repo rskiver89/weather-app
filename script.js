@@ -67,7 +67,7 @@ function showCurrentWeather() {
                     weatherIcon.setAttribute('src', `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
                     errorMessage.style.display = 'none';
 
-                    //Fetch forecast
+                    //Fetch 3 day forecast
                     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`)
                         .then(res => res.json())
                         .then(data => {
