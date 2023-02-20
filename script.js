@@ -56,6 +56,7 @@ cityForm.addEventListener('submit', (event) => {
 // Function to make current location the default
 
 function showCurrentWeather() {
+    removeWeatherClass()
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
             const lat = position.coords.latitude;
@@ -98,8 +99,27 @@ function showCurrentWeather() {
         errorMessage.style.display = 'block';
         errorMessage.innerText = 'Geolocation is not supported by this browser.';
     }
+
 }
 
 window.onload = function() {
     showCurrentWeather();
   };
+
+
+
+  //   Change Color Scheme
+
+function changeColorScheme(){
+    if (data.weather[0].main === "Clear") {
+        document.body.classList.add("sunny");
+    } else if (data.weather[0].main === "Clouds") {
+        document.body.classList.add("cloudy");
+    } else if (data.weather[0].main === "Rain") {
+        document.body.classList.add("rainy");
+    }    
+}
+
+function removeWeatherClass() {
+    document.body.classList.remove("sunny", "cloudy", "rainy");
+}
