@@ -65,7 +65,6 @@ function updateWeatherInfo(data) {
     weatherIcon.innerHTML = `<img src="${iconUrl}" alt="${data.weather[0].description}">`;
     humidity.textContent = `Humidity: ${data.main.humidity}%`;
     windSpeed.textContent = `Wind Speed: ${data.wind.speed} m/s`;
-    pressure.textContent = `Pressure: ${data.main.pressure} hPa`;
     description.textContent = data.weather[0].description;
 
     const clothing = getClothingSuggestion(data.main.temp, data.weather[0].main);
