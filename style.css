@@ -1,121 +1,139 @@
-body {
-  background-color: #f1f1f1;
-}
-
-.name {
-  font-size: 4em;
-  font-weight: bold;
-  text-transform: uppercase;
-  text-align: center;
+/* General styles */
+* {
   margin: 0;
   padding: 0;
-  color: navy;
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
 }
 
-nav, form, .weather-info, form input[type="search"], form button[type="submit"] {
-  color: #1a1a3a;
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #8ac6d1;
+  color: #fff;
+  transition: background-color 0.5s ease;
 }
 
-form {
-  padding: 10px;
+.header {
+  display: flex;
+  justify-content: space-around;
 }
 
-/* Add a hover effect to the search button */
-form button[type="submit"]:hover {
-  background-color: #1a1a3a;
-  color: #f1f1f1;
-  cursor: pointer;
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
-form input[type="search"] {
-  padding: 10px;
-  border: 2px solid #1a1a3a;
-  border-radius: 10px;
-  margin-right: 10px;
+h1 {
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
-/* Add a hover effect to the search input field */
-form input[type="search"]:hover {
-  border: 2px solid #f1f1f1;
-}
-
-form button[type="submit"] {
-  padding: 10px;
-  background-color: #484884;
-  border-radius: 10px;
-}
-
-.weather-info {
-  background-color: #1a1a3a;
-  padding: 20px;
-  border-radius: 10px;
+h2 {
+  font-weight: 500;
+  font-size: 2rem;
   text-align: center;
-  color: #f1f1f1;
+  margin-bottom: 1rem;
 }
 
+input {
+  display: block;
+  width: 60%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 16px;
+  border: none;
+}
+
+/* Weather info styles */
 .weather-info {
-box-shadow: 0px 0px 20px 2px rgba(26, 26, 58, 0.8);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto 1fr;
+  gap: 1rem;
+  justify-items: center;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
-#error-message {
-padding: 10px;
-margin-top: 10px;
-text-align: center;
-background-color: #ff5252;
-color: #f1f1f1;
-border-radius: 10px;
-box-shadow: 0px 0px 20px 2px rgba(26, 26, 58, 0.8);
+.city {
+  font-size: 2rem;
+  font-weight: 500;
+  grid-row: 1;
 }
 
-.weekly-forecast {
-background-color: rgba(26, 26, 58, 0.8);
-padding: 20px;
-border-radius: 10px;
-color: #f1f1f1;
-text-align: center;
-box-shadow: 0px 0px 20px 2px rgba(26, 26, 58, 0.8);
-overflow-x: scroll;
+.temperature {
+  font-size: 3rem;
+  font-weight: 500;
+  grid-row: 2;
 }
 
-/* Add a hover effect to the forecast day divs */
-.forecast-day:hover {
-background-color: #1a1a3a;
-color: #f1f1f1;
+.weather-icon {
+  grid-row: 3;
+}
+
+.weather-icon img {
+  max-width: 150px;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Other weather details */
+.weather-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Forecast styles */
+.forecast {
+  margin-bottom: 2rem;
+}
+
+.forecast-container {
+  display: flex;
+  justify-content: space-between;
 }
 
 .forecast-day {
-  margin: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  flex: 1;
+  border-radius: 8px;
   padding: 20px;
-  border-radius: 10px;
-  border: 2px solid #f1f1f1;
-  margin-right: 20px;
-  display: inline-block;
-  }
-  
-  .forecast-icon {
-  display: block;
-  margin: 0 auto;
-  }
-
-  .search {
-    text-align: center;
-  }
-
-  /* sunny color scheme */
-.sunny {
-  background-color: #FDB813;
-  color: #fff;
+  margin: 0 10px;
+  box-sizing: border-box;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
-/* cloudy color scheme */
-.cloudy {
-  background-color: #A9A9A9;
-  color: #fff;
+.forecast-day:hover {
+  transform: translateY(-10px);
 }
 
-/* rainy color scheme */
-.rainy {
-  background-color: #00BFFF;
-  color: #fff;
+.clothing-suggestion {
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.clothing-suggestion span {
+  margin: 10px;
 }
