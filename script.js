@@ -10,13 +10,23 @@ search.addEventListener('keypress', (e) => {
     }
 });
 
+function showLoader() {
+    document.querySelector(".loader").style.display = "block";
+  }
+  
+  function hideLoader() {
+    document.querySelector(".loader").style.display = "none";
+  }
+
 function getWeather(city) {
+    showLoader();
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
         .then((response) => response.json())
         .then((data) => updateWeatherInfo(data));
 }
 
 function getForecast(city) {
+    showLoader();
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`)
         .then((response) => response.json())
         .then((data) => updateForecast(data));
@@ -34,6 +44,11 @@ function getForecastByCoords(lat, lon) {
       .then((data) => updateForecast(data));
 }
 
+function celsiusToFahrenheit(celsius) {
+    return (celsius * 9) / 5 + 32;
+  }
+  
+
 function updateWeatherInfo(data) {
     const city = document.querySelector('.city');
     const temperature = document.querySelector('.temperature');
@@ -46,7 +61,7 @@ function updateWeatherInfo(data) {
     const clothingSuggestion = document.querySelector('.clothing-suggestion');
 
     city.textContent = data.name;
-    temperature.textContent = `${Math.round(data.main.temp)}°C`;
+    temperature.textContent = `${Math.round(celsiusToFahrenheit(data.main.temp))}°F`;
     weatherIcon.innerHTML = `<img src="${iconUrl}" alt="${data.weather[0].description}">`;
     humidity.textContent = `Humidity: ${data.main.humidity}%`;
     windSpeed.textContent = `Wind Speed: ${data.wind.speed} m/s`;
@@ -69,6 +84,7 @@ function updateWeatherInfo(data) {
     }
 
     setBackground(data.weather[0].main);
+    hideLoader();
 }
 
 function updateForecast(data) {
@@ -91,13 +107,14 @@ for (const forecast of threeDayForecast) {
 
     forecastDay.innerHTML = `
         <h3>${dayOfWeek}</h3>
-        <div class="forecast-temperature">${Math.round(forecast.main.temp)}°C</div>
+        <div class="forecast-temperature">${Math.round(celsiusToFahrenheit(forecast.main.temp))}°F</div>
         <div class="forecast-icon"><img src="${iconUrl}" alt="${forecast.weather[0].description}"></div>
         <div class="forecast-description">${forecast.weather[0].description}</div>
     `;
 
     forecastContainer.appendChild(forecastDay);
 }
+hideLoader();
 }
 
 function getClothingSuggestion(temp, weather) {
@@ -164,5 +181,7 @@ function getUserLocation() {
 
 
 document.addEventListener('DOMContentLoaded', getUserLocation);
+
+showLoader();
 
 
