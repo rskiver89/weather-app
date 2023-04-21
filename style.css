@@ -165,3 +165,9 @@ input {
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 400px) {
+  .forecast-container {
+    display: block;
+  }
+}
