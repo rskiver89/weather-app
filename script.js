@@ -53,7 +53,7 @@ function updateWeatherInfo(data) {
     const city = document.querySelector('.city');
     const temperature = document.querySelector('.temperature');
     const weatherIcon = document.querySelector('.weather-icon');
-    const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+    const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
     const humidity = document.querySelector('.humidity');
     const windSpeed = document.querySelector('.wind-speed');
     const pressure = document.querySelector('.pressure');
