@@ -102,7 +102,7 @@ for (const forecast of threeDayForecast) {
     const date = new Date(forecast.dt * 1000);
     const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' });
 
-    const iconUrl = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`;
+    const iconUrl = `https://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`;
 
     forecastDay.innerHTML = `
         <h3>${dayOfWeek}</h3>
